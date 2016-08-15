@@ -93,6 +93,12 @@ RED_LED_PATH   := "/sys/class/leds/led:rgb_red/brightness"
 GREEN_LED_PATH := "/sys/class/leds/led:rgb_green/brightness"
 BLUE_LED_PATH  := "/sys/class/leds/led:rgb_blue/brightness"
 
+# Healthd library extension
+ifneq ($(BOARD_AOSP_BASED),)
+BOARD_HAL_STATIC_LIBRARIES := libhealthd.board
+BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(DEVICE_PATH)/charger/images
+endif
+
 # Camera
 TARGET_USE_VENDOR_CAMERA_EXT := true
 USE_DEVICE_SPECIFIC_CAMERA := true
