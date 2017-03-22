@@ -32,12 +32,12 @@
     <device name="SND_DEVICE_OUT_VOIP_SPEAKER" backend="smartpa" />
   </backend_names>
 
-  <device_names>
-    <device name="SND_DEVICE_IN_VOIP_HANDSET_MIC" alias="handset-mic"/>
-    <device name="SND_DEVICE_IN_VOIP_SPEAKER_MIC" alias="speaker-mic"/>
-    <device name="SND_DEVICE_IN_VOIP_HEADSET_MIC" alias="headset-mic"/>
-    <device name="SND_DEVICE_OUT_VOIP_HANDSET" alias="handset"/>
-    <device name="SND_DEVICE_OUT_VOIP_SPEAKER" alias="speaker"/>
-    <device name="SND_DEVICE_OUT_VOIP_HEADPHONES" alias="headphones"/>
-  </device_names>
+	<pcm_ids>
+		<!-- empty -->
+	</pcm_ids>
+
+	<device_names>
+		<device name="SND_DEVICE_IN_HDMI_MIC" alias="hdmi-tx" />
+		<device name="SND_DEVICE_IN_HANDSET_MIC" alias="voice-dmic-ef" />
+	</device_names>
 </audio_platform_info>
