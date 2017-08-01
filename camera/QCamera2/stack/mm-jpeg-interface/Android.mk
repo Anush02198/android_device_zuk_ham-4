@@ -47,6 +47,8 @@ LOCAL_MODULE           := libmmjpeg_interface
 LOCAL_PRELINK_MODULE   := false
 LOCAL_SHARED_LIBRARIES := libdl libcutils liblog libqomx_core
 LOCAL_MODULE_TAGS := optional
+LOCAL_VENDOR_MODULE := true
+
 
 include $(BUILD_SHARED_LIBRARY)
 
