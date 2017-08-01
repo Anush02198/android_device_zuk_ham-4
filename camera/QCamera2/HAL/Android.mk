@@ -9,12 +9,7 @@ LOCAL_CLANG_CFLAGS += \
         -Wno-error=unused-variable \
         -Wno-error=format \
         -Wno-error=sign-compare
-# hal
 
-ifeq ($(TARGET_SUPPORT_HAL1),false)
-LOCAL_CFLAGS += -DQCAMERA_HAL3_SUPPORT
-else
-LOCAL_CFLAGS += -DQCAMERA_HAL1_SUPPORT
 LOCAL_SRC_FILES := \
         QCamera2Factory.cpp \
         QCamera2Hal.cpp \
@@ -31,16 +26,7 @@ LOCAL_SRC_FILES := \
         QCameraThermalAdapter.cpp \
         wrapper/QualcommCamera.cpp
 
-endif
-
-# System header file path prefix
-LOCAL_CFLAGS += -DSYSTEM_HEADER_PREFIX=sys
-
-LOCAL_CFLAGS += -DHAS_MULTIMEDIA_HINTS -D_ANDROID
-
-LOCAL_CFLAGS = -DDEFAULT_DENOISE_MODE_ON -DHAL3 -DQCAMERA_REDEFINE_LOG
-
-LOCAL_CFLAGS += -std=c++11 -std=gnu++0x
+LOCAL_CFLAGS = -Wall -Werror -DDEFAULT_DENOISE_MODE_ON
 
 ifeq ($(TARGET_USES_MEDIA_EXTENSIONS), true)
 LOCAL_CFLAGS += -DUSE_MEDIA_EXTENSIONS
