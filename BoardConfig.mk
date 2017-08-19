@@ -51,22 +51,16 @@ BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 BOARD_DTBTOOL_ARGS := -2
 TARGET_KERNEL_ARCH := arm
-<<<<<<< HEAD
 BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_KERNEL_CMDLINE := console=tty60,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3b7 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1 vmalloc=480M androidboot.selinux=permissive
 TARGET_KERNEL_SOURCE := kernel/cyanogen/msm8974
 TARGET_KERNEL_CONFIG := StarCity_defconfig
+PRODUCT_VENDOR_KERNEL_HEADERS :=  $(DEVICE_PATH)/kernel-headers
 
 # Enable DIAG on eng builds
 ifeq ($(TARGET_BUILD_VARIANT),eng)
 TARGET_KERNEL_ADDITIONAL_CONFIG:= lineageos_debug_config
 endif
-=======
-TARGET_KERNEL_CONFIG := lineageos_bacon_defconfig
-TARGET_KERNEL_SOURCE := kernel/oneplus/msm8974
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
-PRODUCT_VENDOR_KERNEL_HEADERS :=  $(DEVICE_PATH)/kernel-headers
->>>>>>> 8b32438... bacon: Import some kernel-headers
 
 # QCOM
 BOARD_USES_QCOM_HARDWARE := true
