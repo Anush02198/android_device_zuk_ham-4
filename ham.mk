@@ -97,7 +97,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libqomx_core \
     libmmcamera_interface \
-    camera.msm8974 
+    camera.msm8974 \
+    libshim_atomic \
     libmmjpeg_interface \
     mm-jpeg-interface-test \
     mm-qcamera-app \
@@ -105,6 +106,7 @@ PRODUCT_PACKAGES += \
 
 # Camera configuration
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    camera2.portability.force_api=1 \
     camera.disable_zsl_mode=1 \
     media.stagefright.legacyencoder=true \
     media.stagefright.less-secure=true
