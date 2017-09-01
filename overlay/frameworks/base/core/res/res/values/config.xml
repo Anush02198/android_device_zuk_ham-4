@@ -261,8 +261,6 @@
     <!-- Configure wifi tcp buffersizes in the form:
          rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
     <string name="config_wifi_tcp_buffers" translatable="false">524288,2097152,4194304,262144,524288,1048576</string>
-<<<<<<< HEAD
-=======
 
     <!-- Enable doze powersaving -->
     <bool name="config_enableAutoPowerModes">true</bool>
@@ -287,5 +285,4 @@
      <!-- Specifies the path that is used by AdaptiveIconDrawable class to crop launcher icons. -->
      <string name="config_icon_mask" translatable="false">"M50 0C77.6 0 100 22.4 100 50C100 77.6 77.6 100 50 100C22.4 100 0 77.6 0 50C0 22.4 22.4 0 50 0Z"</string>
 
->>>>>>> 4f4c11c... bacon: config: Use round icon mask
 </resources>
