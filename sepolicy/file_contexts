@@ -35,3 +35,7 @@
 # sys
 /sys/devices/soc/soc:fpc_fpc1020/proximity_state                u:object_r:sysfs_fpc_proximity:s0
 
+# HALs
+/system/vendor/bin/hw/android\.hardware\.vibrator@1\.0-service.shamu     u:object_r:hal_vibrator_default_exec:s0
+
+
