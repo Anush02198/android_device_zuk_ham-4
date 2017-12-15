@@ -1608,6 +1608,11 @@ int QCameraGrallocMemory::allocate(int count, int /*size*/)
 
         mPrivateHandle[cnt] =
             (struct private_handle_t *)(*mBufferHandle[cnt]);
+
+        //update max fps info
+        float maxFpsInFloat = (float) mMaxFPS;
+
+        setMetaData(mPrivateHandle[cnt], UPDATE_REFRESH_RATE, (void*)&maxFpsInFloat);
         mMemInfo[cnt].main_ion_fd = open("/dev/ion", O_RDONLY);
         if (mMemInfo[cnt].main_ion_fd < 0) {
             ALOGE("%s: failed: could not open ion device", __func__);
