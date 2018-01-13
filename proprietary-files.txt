@@ -100,6 +100,9 @@ vendor/lib/liboemcamera.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
 
+# Face Unlock
+vendor/lib/libprotobuf-cpp-haxx.so|c280b24acc9c17ca20072d51be9f87b63434dc04
+
 # Camera firmware
 vendor/firmware/cpp_firmware_v1_1_1.fw
 vendor/firmware/cpp_firmware_v1_1_6.fw
