@@ -180,6 +180,7 @@ on boot
 on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
 
+    mount none /system/vendor/lib/libfacenet-32.so /system/lib/libfacenet.so bind
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
