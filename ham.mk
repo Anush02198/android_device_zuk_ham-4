@@ -202,8 +202,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti \
-    power.msm8974
+    android.hardware.power@1.1-service-qti 
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -231,7 +230,8 @@ PRODUCT_PACKAGES += \
 
 # Thermal
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine-8974.conf
+    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine-8974.conf \
+    $(LOCAL_PATH)/configs/thermal-engine-vr.conf:$system/etc/thermal-engine-vr.conf
 
 # VR
 PRODUCT_PACKAGES += \
