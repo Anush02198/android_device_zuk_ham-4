@@ -55,7 +55,6 @@ BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_KERNEL_CMDLINE := console=tty60,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3b7 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1 vmalloc=480M androidboot.selinux=permissive
 TARGET_KERNEL_SOURCE := kernel/cyanogen/msm8974
 TARGET_KERNEL_CONFIG := StarCity_defconfig
-PRODUCT_VENDOR_KERNEL_HEADERS :=  $(DEVICE_PATH)/kernel-headers
 
 # Enable DIAG on eng builds
 ifeq ($(TARGET_BUILD_VARIANT),eng)
@@ -82,6 +81,17 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_USE_SMD_TTY := true
 BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
+
+# Charger
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_CHARGER_DISABLE_INIT_BLANK := true
+BOARD_CHARGING_CMDLINE_NAME  := "androidboot.mode"
+BOARD_CHARGING_CMDLINE_VALUE := "usb_chg"
+BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
+BLINK_PATH     := "/sys/class/leds/led:rgb_red/blink"
+RED_LED_PATH   := "/sys/class/leds/led:rgb_red/brightness"
+GREEN_LED_PATH := "/sys/class/leds/led:rgb_green/brightness"
+BLUE_LED_PATH  := "/sys/class/leds/led:rgb_blue/brightness"
 
 # Camera
 TARGET_USE_VENDOR_CAMERA_EXT := true
@@ -114,6 +124,7 @@ USE_OPENGL_RENDERER := true
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
 TARGET_USES_HWC2 := true
 TARGET_USES_ION := true
+TARGET_USES_NEW_ION_API :=true
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 HAVE_ADRENO_SOURCE:= false
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
@@ -175,11 +186,13 @@ TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 USE_DEVICE_SPECIFIC_LOC_API := true
 
+# Keystore
+TARGET_PROVIDES_KEYMASTER := true
+
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
 
 # PowerHAL
-TARGET_POWERHAL_VARIANT := qcom
 TARGET_HAS_LEGACY_POWER_STATS 	:= true
 TARGET_HAS_NO_WIFI_STATS 	:= true
 TARGET_USES_INTERACTION_BOOST 	:= true
