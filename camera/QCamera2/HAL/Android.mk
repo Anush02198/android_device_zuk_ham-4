@@ -45,10 +45,10 @@ endif
 LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/../stack/common \
         frameworks/native/include \
-        frameworks/native/libs/nativewindow/include \
+        frameworks/native/libs/nativewindow/include/ \
         frameworks/native/include/media/openmax \
-        $(call project-path-for,qcom-display)/libgralloc \
-        $(call project-path-for,qcom-media)/libstagefrighthw \
+        hardware/qcom/display-caf/msm8974/libgralloc \
+        hardware/qcom/media/msm8974/libstagefrighthw \
         $(LOCAL_PATH)/../../mm-image-codec/qexif \
         $(LOCAL_PATH)/../../mm-image-codec/qomx_core \
         $(LOCAL_PATH)/../util \
@@ -61,7 +61,7 @@ LOCAL_CFLAGS += -DUSE_KK_CODE
 endif
 
 ifeq ($(TARGET_USE_VENDOR_CAMERA_EXT),true)
-LOCAL_C_INCLUDES += $(call project-path-for,qcom-display)/msm8974/libgralloc
+LOCAL_C_INCLUDES += $(call project-path-for,qcom)display-caf/msm8974/libgralloc
 else
 LOCAL_C_INCLUDES += $(call project-path-for,qcom-display)/libgralloc
 endif
@@ -69,7 +69,7 @@ LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/media
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
-LOCAL_SHARED_LIBRARIES := libcamera_client liblog libhardware libutils libcutils libdl libsensor
+LOCAL_SHARED_LIBRARIES := libcamera_client liblog libhardware libutils libcutils libdl libsensor libui libgui 
 LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface
 LOCAL_SHARED_LIBRARIES += libhidltransport libsensor android.hidl.token@1.0-utils android.hardware.graphics.bufferqueue@1.0
 LOCAL_STATIC_LIBRARIES := libarect
