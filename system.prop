@@ -4,7 +4,7 @@
 
 ro.sf.lcd_density=420
 persist.hwc.mdpcomp.enable=true
-ro.opengles.version=196608
+ro.opengles.version=196610
 
 # GPS
 persist.gps.qc_nlp_in_use=0
@@ -91,4 +91,10 @@ ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
 
 # Google assistant
 ro.opa.eligible_device=true
+
+# Higher fling velocities
+# for smoother scrolling and better responsiveness
+ro.min.fling_velocity=160
+ro.max.fling_velocity=20000
+
 
