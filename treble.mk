@@ -20,12 +20,23 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.device@3.2-impl \
-    android.hardware.camera.provider@2.4-impl
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
+    camera.device@1.0-impl\
+    camera.device@3.2-impl     
 
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl
+
+# Fingerprint
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint@2.1-service \
+    fingerprint.msm8974 
+
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-impl 
 
 # GNSS
 PRODUCT_PACKAGES += \
@@ -34,7 +45,8 @@ PRODUCT_PACKAGES += \
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -43,3 +55,11 @@ PRODUCT_PACKAGES += \
 # Wi-Fi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service
+
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl        

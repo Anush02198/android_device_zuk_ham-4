@@ -99,12 +99,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libqomx_core \
     libmmcamera_interface \
+    camera.msm8974 
     libmmjpeg_interface \
-    android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service \
-    camera.device@1.0-impl\
-    camera.device@3.2-impl \
-    camera.msm8974 \
     mm-jpeg-interface-test \
     mm-qcamera-app \
     Snap
@@ -125,10 +121,7 @@ endif
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.enable_boot_charger_mode=1
 
-# DRM
-PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-impl
-
+#DRM
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
 
@@ -138,8 +131,6 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service \
-    fingerprint.msm8974 \
     HamPocketMode
 
 # VNDK-SP:
@@ -147,7 +138,7 @@ PRODUCT_PACKAGES += \
    vndk-sp
 
 # Treble packages
- $(call inherit-product, device/zuk/ham/treble.mk)
+ $(call inherit-product,device/zuk/ham/treble.mk)
 
 # Graphics
 PRODUCT_PACKAGES += \
@@ -167,7 +158,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl \
     gps.msm8974
 
 PRODUCT_COPY_FILES += \
@@ -178,7 +168,6 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-impl \
     lights.msm8974
 
 # LiveDisplay native
@@ -224,10 +213,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
      android.hardware.power@1.0-service-qti
 
-# Sensors
-PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl
-
 # Seccomp policy
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:system/vendor/etc/seccomp_policy/mediacodec.policy
@@ -240,10 +225,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/msm8974-taiko-mtp-snd-card_Button_Jack.kl:system/usr/keylayout/msm8974-taiko-mtp-snd-card_Button_Jack.kl \
     $(LOCAL_PATH)/keylayout/fpc1020tp.kl:system/usr/keylayout/fpc1020tp.kl
 
-# Keymaster
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service
 
 # Keystore
 PRODUCT_PACKAGES += \
@@ -251,7 +232,9 @@ PRODUCT_PACKAGES += \
 
 # VR
 PRODUCT_PACKAGES += \
-    vr.msm8974
+    vr.msm8974 \
+    android.hardware.vr@1.0-impl \
+    android.hardware.vr@1.0-service
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml
@@ -277,18 +260,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine-8974.conf \
     $(LOCAL_PATH)/configs/thermal-engine-vr.conf:$system/etc/thermal-engine-vr.conf
 
-# USB
-PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
 
-# Vibrator
-PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-impl
-    
- # WiFi HAL
-PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service   
-    
 # WiFi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
@@ -324,6 +296,10 @@ PRODUCT_PACKAGES += \
     com.dsi.ant.antradio_library \
     libantradio
 
+RODUCT_COPY_FILES += \
+    external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:$system/etc/permissions/com.dsi.ant.antradio_library.xml
+
+
 # Enable Bluetooth HFP
 PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.hfp.client=1
@@ -332,7 +308,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.mdpcomp.enable=true \
     persist.timed.enable=true \
-    ro.opengles.version=196608 \
+    ro.opengles.version=196610 \
     ro.qualcomm.bt.hci_transport=smd \
     ro.telephony.default_network=9 \
     ro.use_data_netmgrd=true \
