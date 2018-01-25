@@ -98,10 +98,23 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl-legacy \
-    camera.device@1.0-impl-legacy \
+    libqomx_core \
+    libmmcamera_interface \
+    libmmjpeg_interface \
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service \
+    camera.device@1.0-impl\
+    camera.device@3.2-impl \
     camera.msm8974 \
+    mm-jpeg-interface-test \
+    mm-qcamera-app \
     Snap
+
+# Camera configuration
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    camera.disable_zsl_mode=1 \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true
 
 # Healthd packages
 ifneq ($(BOARD_AOSP_BASED),)
@@ -116,6 +129,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    drm.service.enabled=true
 
 #Doze
 PRODUCT_PACKAGES += \
@@ -202,10 +218,6 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libstagefrighthw
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.media.treble_omx=false
-    camera.disable_treble=true
-
 # Power
 PRODUCT_PACKAGES += \
      android.hardware.power@1.0-service-qti
@@ -228,16 +240,12 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
 
 # Keystore
 PRODUCT_PACKAGES += \
     Keystore.msm8974
-
-# Thermal
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine-8974.conf \
-    $(LOCAL_PATH)/configs/thermal-engine-vr.conf:$system/etc/thermal-engine-vr.conf
 
 # VR
 PRODUCT_PACKAGES += \
@@ -309,10 +317,10 @@ PRODUCT_PACKAGES += \
     libxml2
 
 # ANT+
-#PRODUCT_PACKAGES += \
-    #AntHalService \
-    #com.dsi.ant.antradio_library \
-    #libantradio
+PRODUCT_PACKAGES += \
+    AntHalService \
+    com.dsi.ant.antradio_library \
+    libantradio
 
 # Enable Bluetooth HFP
 PRODUCT_PROPERTY_OVERRIDES += \

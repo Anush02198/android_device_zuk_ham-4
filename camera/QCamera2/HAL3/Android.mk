@@ -28,6 +28,25 @@ LOCAL_SRC_FILES := \
 LOCAL_CFLAGS := -Wall -Werror
 LOCAL_CFLAGS += -DHAS_MULTIMEDIA_HINTS
 
+# System header file path prefix
+LOCAL_CFLAGS += -DSYSTEM_HEADER_PREFIX=sys
+
+LOCAL_CFLAGS += -DHAS_MULTIMEDIA_HINTS -D_ANDROID
+
+LOCAL_CFLAGS = -DDEFAULT_DENOISE_MODE_ON -DHAL3 -DQCAMERA_REDEFINE_LOG
+
+LOCAL_CFLAGS += -std=c++11 -std=gnu++0x
+
+ifeq ($(TARGET_USES_MEDIA_EXTENSIONS), true)
+LOCAL_CFLAGS += -DUSE_MEDIA_EXTENSIONS
+endif
+
+ifeq ($(TARGET_USE_VENDOR_CAMERA_EXT),true)
+LOCAL_CFLAGS += -DUSE_VENDOR_CAMERA_EXT
+endif
+ifneq ($(call is-platform-sdk-version-at-least,18),true)
+LOCAL_CFLAGS += -DUSE_JB_MR1
+endif
 
 LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/../stack/common \
@@ -42,12 +61,17 @@ LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/../../mm-image-codec/qomx_core \
         $(LOCAL_PATH)/../util
 
-
+ifeq ($(TARGET_USE_VENDOR_CAMERA_EXT),true)
+LOCAL_C_INCLUDES += $(call project-path-for,qcom)display-caf/msm8974/libgralloc
+else
+LOCAL_C_INCLUDES += $(call project-path-for,qcom-display)/libgralloc
+endif
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
-LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include/media
+LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 LOCAL_SHARED_LIBRARIES := libcamera_client liblog libhardware libutils libcutils libdl libsensor libui libgui 
-LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface
+LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface libcamera_metadata
 LOCAL_SHARED_LIBRARIES += libhidltransport libsensor android.hidl.token@1.0-utils android.hardware.graphics.bufferqueue@1.0
 LOCAL_STATIC_LIBRARIES := libarect
 LOCAL_HEADER_LIBRARIES := libnativebase_headers
