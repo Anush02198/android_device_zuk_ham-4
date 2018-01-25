@@ -126,14 +126,12 @@ BOARD_OEMIMAGE_PARTITION_SIZE      := 133169152
 TARGET_USES_MKE2FS := true
 
 # Graphics
+SF_START_GRAPHICS_ALLOCATOR_SERVICE := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 USE_OPENGL_RENDERER := true
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
-TARGET_USES_HWC2 := true
-TARGET_USES_ION := true
-TARGET_USES_NEW_ION_API :=true
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 HAVE_ADRENO_SOURCE:= false
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # Shader cache config options
 # Maximum size of the  GLES Shaders that can be cached for reuse.
@@ -221,16 +219,8 @@ TARGET_HW_DISK_ENCRYPTION := true
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
 
-<<<<<<< HEAD
 # ANT+ - TODO: Confirm this - TODO: Confirm this - TODO: Confirm this - TODO: Confirm this
-#BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
-=======
-# Render
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-SF_START_GRAPHICS_ALLOCATOR_SERVICE := true
-USE_OPENGL_RENDERER := true
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
->>>>>>> bada10a... shamu: Enable SF_START_GRAPHICS_ALLOCATOR_SERVICE
+BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
 #Enable dexpreopt to speed boot time
 ifeq ($(HOST_OS),linux)
