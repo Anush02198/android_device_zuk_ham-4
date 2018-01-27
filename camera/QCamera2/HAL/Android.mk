@@ -8,14 +8,8 @@ LOCAL_CLANG_CFLAGS += \
         -Wno-error=gnu-designator \
         -Wno-error=unused-variable \
         -Wno-error=format \
-        -Wno-error=sign-compare \
-        -Wno-error=format \
-        -Wno-error=unused-parameter
+        -Wno-error=sign-compare
 
-ifeq ($(TARGET_SUPPORT_HAL1),false)
-LOCAL_CFLAGS += -DQCAMERA_HAL3_SUPPORT
-else
-LOCAL_CFLAGS += -DQCAMERA_HAL1_SUPPORT
 LOCAL_SRC_FILES := \
         QCamera2Factory.cpp \
         QCamera2Hal.cpp \
@@ -32,16 +26,7 @@ LOCAL_SRC_FILES := \
         QCameraThermalAdapter.cpp \
         wrapper/QualcommCamera.cpp
 
-endif
-
-# System header file path prefix
-LOCAL_CFLAGS += -DSYSTEM_HEADER_PREFIX=sys
-
-LOCAL_CFLAGS += -DHAS_MULTIMEDIA_HINTS -D_ANDROID
-
-LOCAL_CFLAGS = -DDEFAULT_DENOISE_MODE_ON -DHAL3 -DQCAMERA_REDEFINE_LOG
-
-LOCAL_CFLAGS += -std=c++11 -std=gnu++0x
+LOCAL_CFLAGS = -Wall -Werror -DDEFAULT_DENOISE_MODE_ON
 
 ifeq ($(TARGET_USES_MEDIA_EXTENSIONS), true)
 LOCAL_CFLAGS += -DUSE_MEDIA_EXTENSIONS
@@ -56,7 +41,6 @@ endif
 ifneq ($(call is-platform-sdk-version-at-least,18),true)
 LOCAL_CFLAGS += -DUSE_JB_MR1
 endif
-LOCAL_CFLAGS += -DDEFAULT_ZSL_MODE_ON
 
 LOCAL_C_INCLUDES := \
         $(LOCAL_PATH)/../stack/common \
@@ -94,7 +78,6 @@ LOCAL_HEADER_LIBRARIES := libnativebase_headers
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE := camera.$(TARGET_BOARD_PLATFORM)
 LOCAL_VENDOR_MODULE := true
-LOCAL_32_BIT_ONLY := true
 LOCAL_MODULE_TAGS := optional
 LOCAL_PROPRIETARY_MODULE := true
 
