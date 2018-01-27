@@ -7,6 +7,7 @@ LOCAL_CLANG_CFLAGS += \
         -Wno-error=strlcpy-strlcat-size \
         -Wno-error=gnu-designator \
         -Wno-error=unused-variable \
+        -Wno-error=unused-parameter \
         -Wno-error=format \
         -Wno-error=sign-compare
 
