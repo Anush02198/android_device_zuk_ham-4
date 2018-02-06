@@ -71,7 +71,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-service.qcom
+    android.hardware.vibrator@1.0-impl
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
