@@ -95,8 +95,12 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+
     libqomx_core \
-    libmmcamera_interface \
+    libmmcamera_interface \android.hardware.camera.provider@2.4-impl-legacy \
+    android.hardware.camera.provider@2.4-service \
+    camera.device@3.2-impl-legacy \
+    camera.device@1.0-impl-legacy \
     camera.msm8974 \
     libshim_atomic \
     libmmjpeg_interface \
