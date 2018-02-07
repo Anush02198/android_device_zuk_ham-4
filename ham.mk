@@ -207,7 +207,12 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-     android.hardware.power@1.0-service-qti
+     android.hardware.power@1.1-impl \
+     power.msm8974 \
+
+# OMX
+PRODUCT_PACKAGES += \
+     android.hardware.media.omx@1.0-impl \
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
