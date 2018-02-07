@@ -106,7 +106,7 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_QTI_CAMERA_32BIT_ONLY := true
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 TARGET_USE_COMPAT_GRALLOC_ALIGN := true
-
+TARGET_USES_NON_TREBLE_CAMERA 	:= true
 
 # Tap to wake
 TARGET_TAP_TO_WAKE_NODE :="/sys/devices/virtual/touch/tp_dev/gesture_on"
